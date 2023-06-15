@@ -1,7 +1,8 @@
 <script lang="ts">
 import {getNameByCode} from './displayNames';
-import {countries} from './countries';
-import {currencies} from './currencies';
+import {countries} from './iso-codes/countries';
+import {currencies} from './iso-codes/currencies';
+import {languages} from './iso-codes/languages';
 export let currentLang;
 </script>
 <h1><code>Intl.DisplayNames</code></h1>
@@ -18,8 +19,8 @@ export let currentLang;
 <summary>Nazwa języka</summary>
   <select>
   <option>---</option>
-  {#each countries as country}
-  <option value={country}>{getNameByCode('language',country,currentLang)}</option>
+  {#each languages as language}
+  <option value={language}>{getNameByCode('language',language,currentLang)}</option>
   {/each}
   </select>
 </details>

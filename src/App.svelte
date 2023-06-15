@@ -1,8 +1,10 @@
 <script lang="ts">
 import {getNameByCode} from './lib/displayNames';
+import {languages} from './lib/iso-codes/languages';
   import DisplayNames from './lib/DisplayNames.svelte';
+  import Collator from './lib/Collator.svelte';
   let lang = 'pl';
-  $: options = ['pl','en','de','nl','hi','fr','nb'].map(code=>({code,displayName: code.toUpperCase()}));
+  const options = languages.map(code=>({code,displayName: getNameByCode('language',code,'pl')}));
 
 </script>
 <header>
@@ -18,3 +20,4 @@ import {getNameByCode} from './lib/displayNames';
 </header>
 
 <DisplayNames currentLang={lang.toLowerCase()}/>
+<Collator currentLang={lang.toLowerCase()}/>
